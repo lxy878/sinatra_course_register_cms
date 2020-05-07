@@ -8,7 +8,7 @@ class ApplicationController < Sinatra::Base
 
     get '/' do
         'hello world'
+        binding.pry
     end
-
     
 end

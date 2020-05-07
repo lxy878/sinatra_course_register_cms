@@ -13,5 +13,4 @@ database_config = {
 set :environment, ENV['SINATRA_ENV'].to_sym
 set :database, database_config
 
-require './app/controllers/application_controller'
 require_all 'app'
