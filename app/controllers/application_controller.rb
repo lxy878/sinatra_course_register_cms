@@ -9,14 +9,26 @@ class ApplicationController < Sinatra::Base
     use Rack::Flash
 
     get '/' do
-        'hello world'
         erb :index
     end
-    
+
     post '/login' do 
+        dep = Department.find_by_slug(params[:name])
         
+        if dep.nil?
+            flash[:login_error] = '* Department is not existed.'
+            redirect '/'
+        elsif 
+        else
+            session[:dep_id] = dep.id
+            redirect "/login/#{dep.slug}"
+        end
     end 
     
+    get '/login/:slug' do
+        erb :login
+    end
+
     get '/signup' do
         erb :signup
     end
