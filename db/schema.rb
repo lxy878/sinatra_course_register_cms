@@ -19,7 +19,7 @@ ActiveRecord::Schema.define(version: 2020_05_07_111306) do
   end
 
   create_table "departments", force: :cascade do |t|
-    t.string "username"
+    t.string "name"
     t.string "password_digest"
   end
 

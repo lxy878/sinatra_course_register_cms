@@ -12,5 +12,7 @@ database_config = {
 
 set :environment, ENV['SINATRA_ENV'].to_sym
 set :database, database_config
+require 'sinatra/base'
+require 'rack-flash'
 
 require_all 'app'
