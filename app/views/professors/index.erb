@@ -1,0 +1,10 @@
+<h1>Professors in <%= @dep.name%> Department</h1>
+<ul>
+    <% @professors.each do |professor|%>
+        <li><a href="/professors/<%=professor.slug%>"><%= professor.name%></a></li>
+    <% end %>
+</ul>
+<a href="/professors/new">add a new professor</a>
+<a href="/courses">Course List</a>
+<a href="/professors">Professor List</a>
+<a href="/departments/menu">menu</a>

@@ -1,0 +1,12 @@
+<h1> Professor <%= @professor.name%> </h1>
+<h2>Course List </h2>
+
+<ul>
+    <li><a href="">course</a></li>
+</ul>
+
+<a href="/professors/<%=@professor.slug%>/edit">Edit Professor Info</a>
+<form action="/professors/<%=@professor.slug%>" method="post">
+    <input type="hidden" name="_method" value='DELETE'>
+    <input type="submit" name="" value="Delete Professor Info">
+</form>

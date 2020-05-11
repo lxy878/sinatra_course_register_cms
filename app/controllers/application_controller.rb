@@ -16,17 +16,12 @@ class ApplicationController < Sinatra::Base
         dep = Department.find_by_slug(params[:name])
         if dep && dep.authenticate(params[:password])
             session[:dep_id] = dep.id
-            redirect "/menu"
+            redirect "/departments/menu"
         else
             flash[:login_error] = '* Department name or password is incorrect.'
             redirect '/'
         end
     end 
-    
-    get '/menu' do
-        authentication_required
-        erb :menu
-    end
 
     get '/signup' do
         erb :signup
