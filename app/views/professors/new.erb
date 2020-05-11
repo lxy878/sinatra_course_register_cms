@@ -1,0 +1,14 @@
+<h1>Create New Professor</h1>
+
+<form action="/professors" method="POST">
+    <h2>Professor Info</h2>
+    <p>Name: <input type="text" name="professor[name]" value=""></p>
+    <h2>Choose Course/s</h2>
+        <%# add course list %>
+        <input type="checkbox" name="professor[course_ids][]" value="">name1</input>
+        <input type="checkbox" name="professor[course_ids][]" value="">name1</input>
+
+    
+    <br><br> <input type="submit" value="Create">
+</form>
+<a href="/professors">Professor List</a>

@@ -14,8 +14,8 @@ ActiveRecord::Schema.define(version: 2020_05_07_111306) do
 
   create_table "courses", force: :cascade do |t|
     t.string "name"
-    t.integer "dep_id"
-    t.integer "prof_id"
+    t.integer "department_id"
+    t.integer "professor_id"
   end
 
   create_table "departments", force: :cascade do |t|
@@ -25,7 +25,7 @@ ActiveRecord::Schema.define(version: 2020_05_07_111306) do
 
   create_table "professors", force: :cascade do |t|
     t.string "name"
-    t.integer "dep_id"
+    t.integer "department_id"
   end
 
   create_table "student_courses", force: :cascade do |t|
@@ -35,7 +35,7 @@ ActiveRecord::Schema.define(version: 2020_05_07_111306) do
 
   create_table "students", force: :cascade do |t|
     t.string "name"
-    t.integer "dep_id"
+    t.integer "department_id"
   end
 
 end

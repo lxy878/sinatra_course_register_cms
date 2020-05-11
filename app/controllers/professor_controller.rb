@@ -10,20 +10,27 @@ class ProfessorController < ApplicationController
     end
 
     get '/professors/new' do
-        'new'
+        binding.pry
+        erb :'professors/new'
+    end
+
+    post '/professors' do
+        
+        
     end
 
     get '/professors/:slug' do
         @professor = Professor.find_by_slug(params[:slug])
-        # binding.pry
         erb :'professors/show'
     end
 
-    get '/professors/:id/edit' do
-        'edit'
+    get '/professors/:slug/edit' do
+        
+        erb :'professors/edit'
     end
 
-    delete '/professors/:id' do
-        'delete'
+    delete '/professors/:slug' do
+        Professor.find_by_slug(params[:slug]).destroy
+        redirect '/professors'
     end
 end
