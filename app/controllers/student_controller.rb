@@ -1,26 +1,44 @@
 class StudentController < ApplicationController
-    before '/students/*' do
+    before '/student*' do
         authentication_required
     end
 
     get '/students' do
-        
-        'list'
+        @students = Student.all
+        @dep = current_dep
+        erb :'students/index'
     end
 
     get '/students/new' do
-        'new'
+        @courses = Course.all
+        erb :'students/new'
     end
 
-    get '/students/:id' do
-        'student'
+    post '/students' do
+        new_student = Student.create(params[:student])
+        redirect "/students/#{new_student.slug}"
     end
 
-    get '/students/:id/edit' do
-        'edit'
+    get '/students/:slug' do
+        @student = Student.find_by_slug(params[:slug])
+        erb :'students/show'
     end
 
-    delete '/students/:id' do
-        
+    get '/students/:slug/edit' do
+        @student = Student.find_by_slug(params[:slug])
+        @courses = Course.all
+        erb :'students/edit'
+    end
+
+    patch '/students/:slug' do
+        params[:student][:course_ids] ||= []
+        student = Student.find_by_slug(params[:slug])
+        student.update(params[:student])
+        redirect "/students/#{student.slug}"
+    end
+
+    delete '/students/:slug' do
+        student = Student.find_by_slug(params[:slug]).destroy
+        redirect '/students'
     end
 end

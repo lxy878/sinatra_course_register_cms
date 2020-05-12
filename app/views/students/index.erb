@@ -1,0 +1,10 @@
+<h1>Students in <%= @dep.name%> Department</h1>
+<ul>
+    <% @students.each do |student|%>
+        <li><a href="/students/<%=student.slug%>"><%= student.name%></a></li>
+    <% end %>
+</ul>
+<button><a href="/departments/menu">Menu</a></button>
+<button><a href="/students/new">add a new student</a></button>
+<button><a href="/courses">Course List</a></button>
+<button><a href="/professors">Professor List</a></button>

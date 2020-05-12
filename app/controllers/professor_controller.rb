@@ -1,10 +1,9 @@
 class ProfessorController < ApplicationController
-    before '/professors/*' do
+    before '/professor*' do
         authentication_required
     end
 
     get '/professors' do
-        authentication_required
         @dep = current_dep
         @professors = Professor.all
         erb :'professors/index'
@@ -32,7 +31,7 @@ class ProfessorController < ApplicationController
     end
 
     patch '/professors/:slug' do
-        params[:professor][:course_ids] if !params[:professor].has_key?(:course_ids)
+        params[:professor][:course_ids] ||= []
         professor = Professor.find_by_slug(params[:slug])
         professor.update(params[:professor])
         redirect "/professors/#{professor.slug}"
