@@ -2,13 +2,14 @@
 <h2>Course List </h2>
 
 <ul>
-    <%# add: course list %>
-    <li><a href="">course</a></li>
+    <% @professor.courses.each do |course|%>
+        <li><a href="/courses/<%= course.slug %>"><%= course.name %></a></li>
+    <% end %>
 </ul>
 
-<a href="/professors/<%=@professor.slug%>/edit">Edit Professor Info</a>
 <form action="/professors/<%=@professor.slug%>" method="post">
+    <button><a href="/professors/<%=@professor.slug%>/edit">Edit Professor Info</a></button>
     <input type="hidden" name="_method" value='DELETE'>
     <input type="submit" name="" value="Delete Professor Info">
+    <button><a href="/professors">Professor List</a></button>
 </form>
-<a href="/professors">Professor List</a>

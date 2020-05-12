@@ -2,13 +2,12 @@
 
 <form action="/professors" method="POST">
     <h2>Professor Info</h2>
+    <input type="hidden" name='professor[department_id]' value='<%= session[:dep_id]%>'>
     <p>Name: <input type="text" name="professor[name]" value=""></p>
     <h2>Choose Course/s</h2>
-        <%# add course list %>
-        <input type="checkbox" name="professor[course_ids][]" value="">name1</input>
-        <input type="checkbox" name="professor[course_ids][]" value="">name1</input>
-
-    
+    <% @courses.each do |course| %>
+        <input type="checkbox" name="professor[course_ids][]" value="<%= course.id %>"><%= course.name%>
+    <% end %>
     <br><br> <input type="submit" value="Create">
+    <button><a href="/professors">Professor List</a></button>
 </form>
-<a href="/professors">Professor List</a>

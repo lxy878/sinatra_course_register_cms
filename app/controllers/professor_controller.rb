@@ -4,19 +4,20 @@ class ProfessorController < ApplicationController
     end
 
     get '/professors' do
+        authentication_required
         @dep = current_dep
         @professors = Professor.all
         erb :'professors/index'
     end
 
     get '/professors/new' do
-        binding.pry
+        @courses = Course.all
         erb :'professors/new'
     end
 
     post '/professors' do
-        
-        
+        new_professor = Professor.create(params[:professor])
+        redirect "/professors/#{new_professor.slug}"
     end
 
     get '/professors/:slug' do
@@ -25,8 +26,16 @@ class ProfessorController < ApplicationController
     end
 
     get '/professors/:slug/edit' do
-        
+        @professor = Professor.find_by_slug(params[:slug])
+        @courses = Course.all
         erb :'professors/edit'
+    end
+
+    patch '/professors/:slug' do
+        params[:professor][:course_ids] if !params[:professor].has_key?(:course_ids)
+        professor = Professor.find_by_slug(params[:slug])
+        professor.update(params[:professor])
+        redirect "/professors/#{professor.slug}"
     end
 
     delete '/professors/:slug' do

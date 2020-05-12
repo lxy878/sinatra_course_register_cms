@@ -12,15 +12,15 @@ before '/courses/*' do
         'new'
     end
 
-    get '/courses/:id' do
+    get '/courses/:slug' do
         'course'
     end
 
-    get '/courses/:id/edit' do
+    get '/courses/:slug/edit' do
         'edit'
     end
 
-    delete '/courses/:id' do
+    delete '/courses/:slug' do
         
     end
 end
