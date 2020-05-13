@@ -1,0 +1,17 @@
+<h1> Course <%= @course.name%> </h1>
+
+<h2>Professor: <a href="/professors/<%= @course.professor.slug %>"><%= @course.professor.name %> </a></h2>
+
+<h2>Students Enrolled</h2>  
+<ul>
+    <% @course.students.each do |student|%>
+        <li><a href="/students/<%= student.slug %>"><%= student.name %></a></li>
+    <% end %>
+</ul>
+
+<form action="/courses/<%=@course.slug%>" method="post">
+    <button><a href="/courses/<%=@course.slug%>/edit">Edit Course Info</a></button>
+    <input type="hidden" name="_method" value='DELETE'>
+    <input type="submit" name="" value="Delete Course Info">
+    <button><a href="/courses">Course List</a></button>
+</form>

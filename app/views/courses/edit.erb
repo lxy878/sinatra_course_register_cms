@@ -1,0 +1,25 @@
+    <h1>Edit <%= @course.name%> Course</h1>
+
+    <form action="/courses/<%= @course.slug%>" method="POST">
+        <input type='hidden' name='_method' value='PATCH'>
+        <h2>Course Info</h2>
+        <input type="hidden" name='course[department_id]' value='<%= session[:dep_id]%>'>
+        <p>Name: <input type="text" name="course[name]" value="<%=@course.name%>"></p>
+        <h2>Choose a Professor</h2>
+        <% @professors.each do |professor| %>
+            <input type='radio' name='course[professor_id]' value='<%=professor.id%>' <%= 'checked' if @course.professor == professor%>><%= professor.name%>
+        <% end %>
+        <h2>Add New Professor</h2>
+        <p>Name: <input type='text' name='professor[name]'></p>
+
+        <h2>Choose Student/s</h2>
+        <% @students.each do |student| %>
+            <input type="checkbox" name="course[student_ids][]" value="<%= student.id %>" <%= 'checked' if @course.students.include?(student)%>><%= student.name%>
+        <% end %>
+
+        <h2>Add New Student</h2>
+        <p>Name: <input type='text' name='student[name]'></p>
+
+        <br><br> <input type="submit" value="Edit">
+        <button><a href="/courses">Course List</a></button>
+    </form>
