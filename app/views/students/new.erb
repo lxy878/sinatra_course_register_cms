@@ -3,7 +3,7 @@
 <form action="/students" method="POST">
     <h2>Student Info</h2>
     <input type="hidden" name='student[department_id]' value='<%= session[:dep_id]%>'>
-    <p>Name: <input type="text" name="student[name]" value=""></p>
+    <p>Name: <input type="text" name="student[name]" value="" required></p>
     <h2>Choose Course/s</h2>
     <% @courses.each do |course| %>
         <input type="checkbox" name="student[course_ids][]" value="<%= course.id %>"><%= course.name%>

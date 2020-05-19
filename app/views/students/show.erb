@@ -1,11 +1,15 @@
 <h1> Student <%= @student.name%> </h1>
 <h2>Enrolled Courses</h2>
 
-<ul>
-    <% @student.courses.each do |course|%>
-        <li><a href="/courses/<%= course.slug %>"><%= course.name %></a></li>
-    <% end %>
-</ul>
+<% if @student.courses.empty? %>
+    <p>No Course Signed</p>
+<% else %>
+    <ul>
+        <% @student.courses.each do |course|%>
+            <li><a href="/courses/<%= course.slug %>"><%= course.name %></a></li>
+        <% end %>
+    </ul>
+<% end %>
 
 <form action="/students/<%=@student.slug%>" method="post">
     <button><a href="/students/<%=@student.slug%>/edit">Edit Student Info</a></button>

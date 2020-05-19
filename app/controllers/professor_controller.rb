@@ -31,7 +31,6 @@ class ProfessorController < ApplicationController
     end
 
     patch '/professors/:slug' do
-        params[:professor][:course_ids] ||= []
         professor = Professor.find_by_slug(params[:slug])
         professor.update(params[:professor])
         redirect "/professors/#{professor.slug}"

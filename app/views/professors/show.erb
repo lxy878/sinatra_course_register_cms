@@ -1,12 +1,14 @@
 <h1> Professor <%= @professor.name%> </h1>
 <h2>Course List </h2>
-
-<ul>
-    <% @professor.courses.each do |course|%>
-        <li><a href="/courses/<%= course.slug %>"><%= course.name %></a></li>
-    <% end %>
-</ul>
-
+<% if @professor.courses.empty? %>
+    <p>No Course Signed</p>
+<% else %>
+    <ul>
+        <% @professor.courses.each do |course|%>
+            <li><a href="/courses/<%= course.slug %>"><%= course.name %></a></li>
+        <% end %>
+    </ul>
+<% end %>
 <form action="/professors/<%=@professor.slug%>" method="post">
     <button><a href="/professors/<%=@professor.slug%>/edit">Edit Professor Info</a></button>
     <input type="hidden" name="_method" value='DELETE'>

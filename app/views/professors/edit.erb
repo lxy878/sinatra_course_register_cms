@@ -4,7 +4,7 @@
     <input type='hidden' name='_method' value='PATCH'>
     <h2>The Professor Info</h2>
     <input type="hidden" name='professor[department_id]' value='<%= session[:dep_id]%>'>
-    <p>Name: <input type="text" name="professor[name]" value="<%= @professor.name %>"></p>
+    <p>Name: <input type="text" name="professor[name]" value="<%= @professor.name %>" required></p>
     <h2>Choose Course/s</h2>
     <% @courses.each do |course| %>
         <input type="checkbox" name="professor[course_ids][]" value="<%= course.id %>" <%= 'checked' if @professor.courses.include?(course)%>><%= course.name%>

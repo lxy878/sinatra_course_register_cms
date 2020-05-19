@@ -31,7 +31,6 @@ class StudentController < ApplicationController
     end
 
     patch '/students/:slug' do
-        params[:student][:course_ids] ||= []
         student = Student.find_by_slug(params[:slug])
         student.update(params[:student])
         redirect "/students/#{student.slug}"

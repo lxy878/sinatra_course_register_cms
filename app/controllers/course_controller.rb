@@ -17,11 +17,11 @@ before '/courses/*' do
 
     post '/courses' do
         new_course = Course.create(params[:course])
-        if params.has_key?(:student)
+        if params.has_key?(:student) && !params[:student][:name].empty?
             params[:student][:department_id] = session[:dep_id]
             new_course.students << Student.create(params[:student]) 
         end
-        if params.has_key?(:professor)
+        if params.has_key?(:professor) && !params[:professor][:name].empty?
             params[:professor][:department_id] = session[:dep_id]
             new_course.professor = Professor.create(params[:professor])
             new_course.save
@@ -42,17 +42,15 @@ before '/courses/*' do
     end
 
     patch '/courses/:slug' do
-        params[:course][:student_ids] ||= []
         course = Course.find_by_slug(params[:slug])
         course.update(params[:course])
-
-        if params.has_key?(:professor)
+        if params.has_key?(:professor) && !params[:professor][:name].empty?
             params[:professor][:department_id] = session[:dep_id]
             course.professor = Professor.create(params[:professor])
             course.save
         end
 
-        if params.has_key?(:student)
+        if params.has_key?(:student) && !params[:student][:name].empty?
             params[:student][:department_id] = session[:dep_id]
             course.students << Student.create(params[:student]) 
         end

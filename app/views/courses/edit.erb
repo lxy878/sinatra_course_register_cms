@@ -4,7 +4,7 @@
         <input type='hidden' name='_method' value='PATCH'>
         <h2>Course Info</h2>
         <input type="hidden" name='course[department_id]' value='<%= session[:dep_id]%>'>
-        <p>Name: <input type="text" name="course[name]" value="<%=@course.name%>"></p>
+        <p>Name: <input type="text" name="course[name]" value="<%=@course.name%>" required></p>
         <h2>Choose a Professor</h2>
         <% @professors.each do |professor| %>
             <input type='radio' name='course[professor_id]' value='<%=professor.id%>' <%= 'checked' if @course.professor == professor%>><%= professor.name%>

@@ -1,6 +1,9 @@
 <h1><%= @dep.name %> department</h1>
 
-<a href="/courses">Course List</a>
-<a href="/professors">Professor List</a>
-<a href="/students">Student List</a>
-<a href="/logout">Log Out</a>
+<h3>Total Number of Courses: <%= @courses.size %></h3>
+<h3>Total Number of Students: <%= @students.size %></h3>
+<h3>Total Number of Professors: <%= @professors.size %></h3>
+<button><a href="/courses">Course List</a></button>
+<button><a href="/professors">Professor List</a></button>
+<button><a href="/students">Student List</a></button>
+<button><a href="/logout">Log Out</a></button>
