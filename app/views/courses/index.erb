@@ -1,10 +1,15 @@
-<h1>Courses in <%= @dep.name%> Department</h1>
-<ul>
-    <% @courses.each do |course|%>
-        <li><a href="/courses/<%=course.slug%>"><%= course.name%></a></li>
-    <% end %>
-</ul>
-<button><a href="/departments/menu">Menu</a></button>
-<button><a href="/courses/new">add a new course</a></button>
-<button><a href="/students">Student List</a></button>
-<button><a href="/professors">Professor List</a></button>
+<header><h1>Courses in <%= @dep.name%> Department</h1></header>
+<div>
+    <table>
+        <tr><th>Course</th><th>Total Number of Students</th></tr>
+        <% @courses.each do |course|%>
+            <tr><td><a href="/courses/<%=course.slug%>"><%= course.name%></a></td><td><%= course.students.size %></td></tr>
+        <% end %>
+    </table>
+</div>
+<main>
+    <button><a href="/departments/menu">Menu</a></button>
+    <button><a href="/courses/new">add a new course</a></button>
+    <button><a href="/students">Student List</a></button>
+    <button><a href="/professors">Professor List</a></button>
+</main>

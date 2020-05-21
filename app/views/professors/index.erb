@@ -1,10 +1,15 @@
-<h1>Professors in <%= @dep.name%> Department</h1>
-<ul>
-    <% @professors.each do |professor|%>
-        <li><a href="/professors/<%=professor.slug%>"><%= professor.name%></a></li>
-    <% end %>
-</ul>
-<button><a href="/departments/menu">Menu</a></button>
-<button><a href="/professors/new">add a new professor</a></button>
-<button><a href="/courses">Course List</a></button>
-<button><a href="/students">Student List</a></button>
+<header><h1>Professors in <%= @dep.name%> Department</h1></header>
+<div>
+    <table>
+        <tr><th>Professor</th><th>Total Number of Signed Courses</th></tr>
+        <% @professors.each do |professor|%>
+            <tr><td><a href="/professors/<%=professor.slug%>"><%= professor.name%></a></td><td><%= professor.courses.size %></td></tr>
+        <% end %>
+    </table>
+</div>
+<main>
+    <button><a href="/departments/menu">Menu</a></button>
+    <button><a href="/professors/new">add a new professor</a></button>
+    <button><a href="/courses">Course List</a></button>
+    <button><a href="/students">Student List</a></button>
+</main>

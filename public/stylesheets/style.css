@@ -1,0 +1,46 @@
+button > a{
+    text-decoration: none;
+    color: black;
+}
+h3#error{
+    color: red;
+}
+
+header {
+    background: no-repeat left/cover url(/images/header-background.png);
+    height: 100px;
+    align-items: center;
+    position: relative;
+}
+
+header>h1 {
+    position: absolute;
+    margin: 0;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+}
+
+body{
+    margin: 0;
+    background-color: rgb(245, 249, 250);
+    font-family: Big Caslon,Book Antiqua,Palatino Linotype,Georgia,serif; 
+}
+
+main, div{
+    display: flex;
+    justify-content: center;
+    margin: 10px;
+}
+
+main section{
+    display: inline;
+}
+
+table, th, td{
+    text-align: center;
+    border: #000 solid 1px;
+    border-collapse: collapse;
+    padding: 10px;
+}

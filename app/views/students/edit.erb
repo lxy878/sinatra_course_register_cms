@@ -1,14 +1,16 @@
-<h1>Edit Student <%= @student.name %> Info</h1>
+<header><h1>Edit Student <%= @student.name %> Info</h1></header>
 
-<form action="/students/<%= @student.slug %>" method="POST">
-    <input type='hidden' name='_method' value='PATCH'>
-    <h2>The Student Info</h2>
-    <input type="hidden" name='student[department_id]' value='<%= session[:dep_id]%>'>
-    <p>Name: <input type="text" name="student[name]" value="<%= @student.name %>" required></p>
-    <h2>Choose Course/s</h2>
-    <% @courses.each do |course| %>
-        <input type="checkbox" name="student[course_ids][]" value="<%= course.id %>" <%= 'checked' if @student.courses.include?(course)%>><%= course.name%>
-    <% end %>
-    <br><br> <input type="submit" value="Edit">
-    <button><a href="/students/<%=@student.slug%>">Cancel</a></button>
-</form>
+<main>
+    <form action="/students/<%= @student.slug %>" method="POST">
+        <input type='hidden' name='_method' value='PATCH'>
+        <h2>The Student Info</h2>
+        <input type="hidden" name='student[department_id]' value='<%= session[:dep_id]%>'>
+        <p>Name: <input type="text" name="student[name]" value="<%= @student.name %>" required></p>
+        <h2>Choose Course/s</h2>
+        <% @courses.each do |course| %>
+            <input type="checkbox" name="student[course_ids][]" value="<%= course.id %>" <%= 'checked' if @student.courses.include?(course)%>><%= course.name%>
+        <% end %>
+        <br><br> <input type="submit" value="Edit">
+        <button><a href="/students/<%=@student.slug%>">Cancel</a></button>
+    </form>
+</main>

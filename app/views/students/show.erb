@@ -1,19 +1,24 @@
-<h1> Student <%= @student.name%> </h1>
-<h2>Enrolled Courses</h2>
+<header><h1> Student <%= @student.name%> </h1></header>
+<main>
+    <section>
+    <h2>Enrolled Courses</h2>
 
-<% if @student.courses.empty? %>
-    <p>No Course Signed</p>
-<% else %>
-    <ul>
-        <% @student.courses.each do |course|%>
-            <li><a href="/courses/<%= course.slug %>"><%= course.name %></a></li>
-        <% end %>
-    </ul>
-<% end %>
-
-<form action="/students/<%=@student.slug%>" method="post">
-    <button><a href="/students/<%=@student.slug%>/edit">Edit Student Info</a></button>
-    <input type="hidden" name="_method" value='DELETE'>
-    <input type="submit" name="" value="Delete Student Info">
-    <button><a href="/students">Student List</a></button>
-</form>
+    <% if @student.courses.empty? %>
+        <p>No Course Signed</p>
+    <% else %>
+        <table>
+            <tr><th>Course Name</th><th>Professor Name</th></tr>
+            <% @student.courses.each do |course|%>
+                <tr><td><a href="/courses/<%= course.slug %>"><%= course.name %></a></td><td><%= course.professor.nil? ? 'Unsigned': course.professor.name %></td></tr>
+            <% end %>
+        </table>
+    <% end %>
+    <br>
+    <form action="/students/<%=@student.slug%>" method="post">
+        <button><a href="/students/<%=@student.slug%>/edit">Edit Student Info</a></button>
+        <input type="hidden" name="_method" value='DELETE'>
+        <input type="submit" name="" value="Delete Student Info">
+        <button><a href="/students">Student List</a></button>
+    </form>
+    </section>
+</main>

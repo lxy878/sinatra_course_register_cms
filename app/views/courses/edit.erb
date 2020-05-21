@@ -1,5 +1,5 @@
-    <h1>Edit <%= @course.name%> Course</h1>
-
+<header><h1>Edit <%= @course.name%> Course</h1></header>
+<main>
     <form action="/courses/<%= @course.slug%>" method="POST">
         <input type='hidden' name='_method' value='PATCH'>
         <h2>Course Info</h2>
@@ -20,6 +20,7 @@
         <h2>Add New Student</h2>
         <p>Name: <input type='text' name='student[name]'></p>
 
-        <br><br> <input type="submit" value="Edit">
+        <input type="submit" value="Edit">
         <button><a href="/courses">Course List</a></button>
     </form>
+</main>

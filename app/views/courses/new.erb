@@ -1,5 +1,5 @@
-    <h1>Create New Course</h1>
-
+<header><h1>Create New Course</h1></header>
+<main>
     <form action="/courses" method="POST">
         <h2>Course Info</h2>
         <input type="hidden" name='course[department_id]' value='<%= session[:dep_id]%>'>
@@ -19,6 +19,7 @@
         <h2>Add New Student</h2>
         <p>Name: <input type='text' name='student[name]'></p>
 
-        <br><br> <input type="submit" value="Create">
+        <input type="submit" value="Create">
         <button><a href="/courses">Course List</a></button>
     </form>
+</main>

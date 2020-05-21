@@ -1,17 +1,23 @@
-<h1> Professor <%= @professor.name%> </h1>
-<h2>Course List </h2>
-<% if @professor.courses.empty? %>
-    <p>No Course Signed</p>
-<% else %>
-    <ul>
-        <% @professor.courses.each do |course|%>
-            <li><a href="/courses/<%= course.slug %>"><%= course.name %></a></li>
+<header><h1> Professor <%= @professor.name%></h1></header>
+<main>
+    <section>
+        <h2>Course List </h2>
+        <% if @professor.courses.empty? %>
+            <p>No Course Signed</p>
+        <% else %>
+            <table>
+                <tr><th>Course Name</th><th>Total Number of Enrolled Students</th></tr>
+                <% @professor.courses.each do |course|%>
+                    <tr><td><a href="/courses/<%= course.slug %>"><%= course.name %></a></td><td><%= course.students.size %></td></tr>
+                <% end %>
+            </table>
         <% end %>
-    </ul>
-<% end %>
-<form action="/professors/<%=@professor.slug%>" method="post">
-    <button><a href="/professors/<%=@professor.slug%>/edit">Edit Professor Info</a></button>
-    <input type="hidden" name="_method" value='DELETE'>
-    <input type="submit" name="" value="Delete Professor Info">
-    <button><a href="/professors">Professor List</a></button>
-</form>
+        <br>
+        <form action="/professors/<%=@professor.slug%>" method="post">
+            <button><a href="/professors/<%=@professor.slug%>/edit">Edit Professor Info</a></button>
+            <input type="hidden" name="_method" value='DELETE'>
+            <input type="submit" name="" value="Delete Professor Info">
+            <button><a href="/professors">Professor List</a></button>
+        </form>
+    </section>
+</main>
