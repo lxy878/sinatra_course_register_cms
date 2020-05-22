@@ -4,17 +4,21 @@ The content management system(CMS) is designed for the departments of majors in 
 
 
 ## Installation
-    ### install bundle
-    $ bundle install
-    ### install database
-    $ rake db:migrate
+1. install bundle
+
+$ bundle install
+
+2. install database
+
+$ rake db:migrate
 
 ## Usage
-    $ shotgun
-    localhost:9393
-    Notice: Port may be different on some mechines.
 
-    See shotgun description to find out the right port.
+$ shotgun
+
+Enter: localhost:9393 on browsers
+
+Notice: Port may be different on some mechines. See shotgun description to find out the right port.
 
 ## Contributing
 
