@@ -1,11 +1,20 @@
 # Sinatra Course Register CMS
 
+The content management system(CMS) is designed for the departments of majors in colleges. The system allows departments to own an account with encrypted passwords. Each account allows a department to maintain three types of data, students, professors, and courses. Each type of data can be CRUD-ed by the account owner.
+
 
 ## Installation
-
+    ### install bundle
+    $ bundle install
+    ### install database
+    $ rake db:migrate
 
 ## Usage
+    $ shotgun
+    localhost:9393
+    Notice: Port may be different on some mechines.
 
+    See shotgun description to find out the right port.
 
 ## Contributing
 

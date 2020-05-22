@@ -1,11 +1,12 @@
-h = {:name => 'sc', :password => 'dd'}
+h = {:name => 'Computer Science', :password => 'a'}
 cs = Department.create(h)
 
-john=Student.create(name: 'john', department_id: cs.id)
-tom=Student.create(name: 'tom', department_id: cs.id)
-jam=Student.create(name: 'jam', department_id: cs.id)
-p = Professor.create(name: 'p', department_id: cs.id)
-p2 = Professor.create(name: 'p2', department_id: cs.id)
+john=Student.create(name: 'John', department_id: cs.id)
+tom=Student.create(name: 'Tom', department_id: cs.id)
+jam=Student.create(name: 'Jam', department_id: cs.id)
+p = Professor.create(name: 'Page Blue', department_id: cs.id)
+p2 = Professor.create(name: 'Wills', department_id: cs.id)
+p3 = Professor.create(name: 'Woods', department_id: cs.id)
 cs101 = Course.create(name:'cs101', department_id: cs.id, professor_id: p.id)
 cs102 = Course.create(name:'cs102', department_id: cs.id, professor_id: p2.id)
 cs105 = Course.create(name:'cs105', department_id: cs.id, professor_id: p2.id)
