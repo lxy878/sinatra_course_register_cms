@@ -13,7 +13,7 @@ class ApplicationController < Sinatra::Base
     end
 
     post '/login' do 
-        dep = Department.find_by_slug(params[:name])
+        dep = Department.find_by(name: params[:name])
         if dep && dep.authenticate(params[:password])
             session[:dep_id] = dep.id
             redirect "/departments/menu"

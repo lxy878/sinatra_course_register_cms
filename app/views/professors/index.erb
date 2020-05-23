@@ -1,12 +1,16 @@
 <header><h1>Professors in <%= @dep.name%> Department</h1></header>
-<div>
-    <table>
-        <tr><th>Professor</th><th>Total Number of Signed Courses</th></tr>
-        <% @professors.each do |professor|%>
-            <tr><td><a href="/professors/<%=professor.slug%>"><%= professor.name%></a></td><td><%= professor.courses.size %></td></tr>
-        <% end %>
-    </table>
-</div>
+<% if @professors.empty? %>
+    <div><h3>No Professor is Created </h3></div>
+<% else %>
+    <div>
+        <table>
+            <tr><th>Professor</th><th>Total Number of Signed Courses</th></tr>
+            <% @professors.each do |professor|%>
+                <tr><td><a href="/professors/<%=professor.slug%>"><%= professor.name%></a></td><td><%= professor.courses.size %></td></tr>
+            <% end %>
+        </table>
+    </div>
+<% end %>
 <main>
     <button><a href="/departments/menu">Menu</a></button>
     <button><a href="/professors/new">add a new professor</a></button>

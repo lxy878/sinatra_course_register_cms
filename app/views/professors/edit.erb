@@ -5,11 +5,14 @@
         <h2>The Professor Info</h2>
         <input type="hidden" name='professor[department_id]' value='<%= session[:dep_id]%>'>
         <p>Name: <input type="text" name="professor[name]" value="<%= @professor.name %>" required></p>
-        <h2>Choose Course/s</h2>
-        <% @courses.each do |course| %>
-            <input type="checkbox" name="professor[course_ids][]" value="<%= course.id %>" <%= 'checked' if @professor.courses.include?(course)%>><%= course.name%>
+       
+        <% if !@courses.empty? %>
+            <h2>Choose Course/s</h2>
+            <% @courses.each do |course| %>
+                <input type="checkbox" name="professor[course_ids][]" value="<%= course.id %>" <%= 'checked' if @professor.courses.include?(course)%>><%= course.name%>
+            <% end %><br><br>
         <% end %>
-        <br><br> <input type="submit" value="Edit">
+        <input type="submit" value="Edit">
         <button><a href="/professors/<%=@professor.slug%>">Cancel</a></button>
     </form>
 </main>

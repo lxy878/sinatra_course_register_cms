@@ -4,9 +4,9 @@ class DepartmentController < ApplicationController
     end
     get '/departments/menu' do
         @dep = current_dep
-        @courses = Course.all
-        @students = Student.all
-        @professors = Professor.all
+        @courses = @dep.courses
+        @students = @dep.students
+        @professors = @dep.professors
         erb :menu
     end
 

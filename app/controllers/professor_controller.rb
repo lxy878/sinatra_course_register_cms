@@ -5,12 +5,12 @@ class ProfessorController < ApplicationController
 
     get '/professors' do
         @dep = current_dep
-        @professors = Professor.all
+        @professors = @dep.professors
         erb :'professors/index'
     end
 
     get '/professors/new' do
-        @courses = Course.all
+        @courses = current_dep.courses
         erb :'professors/new'
     end
 
@@ -26,7 +26,7 @@ class ProfessorController < ApplicationController
 
     get '/professors/:slug/edit' do
         @professor = Professor.find_by_slug(params[:slug])
-        @courses = Course.all
+        @courses = current_dep.courses
         erb :'professors/edit'
     end
 

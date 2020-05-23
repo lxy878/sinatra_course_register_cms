@@ -1,4 +1,4 @@
-h = {:name => 'Computer Science', :password => 'a'}
+h = {"name"=>"Computer Science", "password"=>"a"}
 cs = Department.create(h)
 
 john=Student.create(name: 'John', department_id: cs.id)

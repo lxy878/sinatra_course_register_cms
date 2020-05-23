@@ -4,13 +4,13 @@ class StudentController < ApplicationController
     end
 
     get '/students' do
-        @students = Student.all
         @dep = current_dep
+        @students = @dep.students
         erb :'students/index'
     end
 
     get '/students/new' do
-        @courses = Course.all
+        @courses = current_dep.courses
         erb :'students/new'
     end
 
@@ -26,7 +26,7 @@ class StudentController < ApplicationController
 
     get '/students/:slug/edit' do
         @student = Student.find_by_slug(params[:slug])
-        @courses = Course.all
+        @courses = current_dep.courses
         erb :'students/edit'
     end
 

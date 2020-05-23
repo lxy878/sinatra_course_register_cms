@@ -4,11 +4,15 @@
         <h2>Student Info</h2>
         <input type="hidden" name='student[department_id]' value='<%= session[:dep_id]%>'>
         <p>Name: <input type="text" name="student[name]" value="" required></p>
+        
+        <% if !@courses.empty? %>
         <h2>Choose Course/s</h2>
-        <% @courses.each do |course| %>
-            <input type="checkbox" name="student[course_ids][]" value="<%= course.id %>"><%= course.name%>
+            <% @courses.each do |course| %>
+                <input type="checkbox" name="student[course_ids][]" value="<%= course.id %>"><%= course.name%>
+            <% end %><br><br> 
         <% end %>
-        <br><br> <input type="submit" value="Create">
+        
+        <input type="submit" value="Create">
         <button><a href="/students">Student List</a></button>
     </form>
 </main>

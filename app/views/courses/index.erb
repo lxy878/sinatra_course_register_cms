@@ -1,12 +1,21 @@
 <header><h1>Courses in <%= @dep.name%> Department</h1></header>
-<div>
-    <table>
-        <tr><th>Course</th><th>Total Number of Students</th></tr>
-        <% @courses.each do |course|%>
-            <tr><td><a href="/courses/<%=course.slug%>"><%= course.name%></a></td><td><%= course.students.size %></td></tr>
-        <% end %>
-    </table>
-</div>
+
+<% if @courses.empty? %>
+    <div><h3>No Course Is Created</h3></div>
+<% else %>
+    <div>
+        <table>
+            <tr><th>Course</th><th>Total Number of Students</th><th>Has/No a Instructor</th></tr>
+            <% @courses.each do |course|%>
+                <tr>
+                    <td><a href="/courses/<%=course.slug%>"><%= course.name%></a></td>
+                    <td><%= course.students.size %></td>
+                    <td><%= course.professor.nil? ? 'Unsigned' : course.professor.name %></td>
+                </tr>
+            <% end %>
+        </table>
+    </div>
+<% end %>
 <main>
     <button><a href="/departments/menu">Menu</a></button>
     <button><a href="/courses/new">add a new course</a></button>

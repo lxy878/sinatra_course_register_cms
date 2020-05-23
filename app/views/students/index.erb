@@ -1,12 +1,16 @@
 <header><h1>Students in <%= @dep.name%> Department</h1></header>
-<div>
-    <table>
-        <tr><th>Student</th><th>Total Number of Enrolled Courses</th></tr>
-        <% @students.each do |student|%>
-             <tr><td><a href="/students/<%=student.slug%>"><%= student.name%></a></td><td><%= student.courses.size %></td></tr>
-        <% end %>
-    </table>
-</div>
+<% if @students.empty? %>
+    <div><h3>No Student is Created </h3></div>
+<% else %>
+    <div>
+        <table>
+            <tr><th>Student</th><th>Total Number of Enrolled Courses</th></tr>
+            <% @students.each do |student|%>
+                <tr><td><a href="/students/<%=student.slug%>"><%= student.name%></a></td><td><%= student.courses.size %></td></tr>
+            <% end %>
+        </table>
+    </div>
+<% end %>
 <main>
     <button><a href="/departments/menu">Menu</a></button>
     <button><a href="/students/new">add a new student</a></button>

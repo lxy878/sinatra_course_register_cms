@@ -5,13 +5,13 @@ before '/courses/*' do
 
     get '/courses' do
         @dep = current_dep
-        @courses = Course.all
+        @courses = @dep.courses
         erb :'courses/index'
     end
 
     get '/courses/new' do
-        @students = Student.all
-        @professors = Professor.all
+        @students = current_dep.students
+        @professors = current_dep.professors
         erb :'courses/new'
     end
 
@@ -36,8 +36,8 @@ before '/courses/*' do
 
     get '/courses/:slug/edit' do
         @course = Course.find_by_slug(params[:slug])
-        @professors = Professor.all
-        @students = Student.all
+        @professors = current_dep.professors
+        @students = current_dep.students
         erb :'courses/edit'
     end
 
