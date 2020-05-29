@@ -1,12 +1,12 @@
 h = {"name"=>"Computer Science", "password"=>"a"}
 cs = Department.create(h)
 
-john=Student.create(name: 'John', department_id: cs.id)
+john=Student.create(name: 'John Green', department_id: cs.id)
 tom=Student.create(name: 'Tom White', department_id: cs.id)
-jam=Student.create(name: 'Jam', department_id: cs.id)
+jam=Student.create(name: 'Jam K', department_id: cs.id)
 p = Professor.create(name: 'Page Blue', department_id: cs.id)
-p2 = Professor.create(name: 'Wills', department_id: cs.id)
-p3 = Professor.create(name: 'Woods', department_id: cs.id)
+p2 = Professor.create(name: 'Wills P', department_id: cs.id)
+p3 = Professor.create(name: 'Woods H', department_id: cs.id)
 cs101 = Course.create(name:'cs101', department_id: cs.id, professor_id: p.id)
 cs102 = Course.create(name:'cs 102', department_id: cs.id, professor_id: p2.id)
 cs105 = Course.create(name:'cs105', department_id: cs.id, professor_id: p2.id)

@@ -29,7 +29,7 @@ class ApplicationController < Sinatra::Base
 
     post '/signup' do
         new_dep = Department.new(params[:department])
-        if Department.find_by(name: new_dep.slug)
+        if Department.find_by(name: new_dep.name)
             flash[:signup_error] = '* Departement name is existed.' 
             redirect '/signup'
         else

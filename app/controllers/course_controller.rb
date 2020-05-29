@@ -43,7 +43,9 @@ before '/courses/*' do
 
     patch '/courses/:slug' do
         course = Course.find_by_slug(params[:slug])
+        params[:course][:student_ids] ||= []
         course.update(params[:course])
+        
         if params.has_key?(:professor) && !params[:professor][:name].empty?
             params[:professor][:department_id] = session[:dep_id]
             course.professor = Professor.create(params[:professor])
