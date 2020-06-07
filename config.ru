@@ -10,4 +10,5 @@ use DepartmentController
 use CourseController
 use StudentController
 use ProfessorController
+use CategoryController
 run ApplicationController

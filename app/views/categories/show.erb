@@ -1,0 +1,13 @@
+<header><h1><%= @category.title %></h1></header>
+<div>
+<h2>Departments belongs to <%= @category.title%>:</h2>
+</div>
+<div>
+<ul>
+    <% @departments.each do |department| %>
+        <li><%= department.name %></li>
+    <% end %>
+</ul>
+</div>
+
+<div><button><a href='/categories' >Category List</a></button></div>

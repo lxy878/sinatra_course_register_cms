@@ -10,7 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_07_111306) do
+ActiveRecord::Schema.define(version: 2020_06_05_194616) do
+
+  create_table "categories", force: :cascade do |t|
+    t.string "title"
+  end
 
   create_table "courses", force: :cascade do |t|
     t.string "name"
@@ -21,6 +25,7 @@ ActiveRecord::Schema.define(version: 2020_05_07_111306) do
   create_table "departments", force: :cascade do |t|
     t.string "name"
     t.string "password_digest"
+    t.string "category_id"
   end
 
   create_table "professors", force: :cascade do |t|

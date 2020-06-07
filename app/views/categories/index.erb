@@ -1,0 +1,11 @@
+<header><h1>Categories</h1></header>
+<div>
+    <ul>
+        <% @categories.each do |category| %>
+            <li><a href='/categories/<%= category.id%>'><%= category.title %></li>
+        <% end %>
+    </ul>
+</div>
+<div>
+    <button><a href='/categories/new' >New Category</a></button>
+</div>

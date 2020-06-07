@@ -1,6 +1,7 @@
 h = {"name"=>"Computer Science", "password"=>"a"}
 cs = Department.create(h)
 
+(1..4).each {|obj| Department.create(name:obj, password: "#{obj}a")}
 john=Student.create(name: 'John Green', department_id: cs.id)
 tom=Student.create(name: 'Tom White', department_id: cs.id)
 jam=Student.create(name: 'Jam K', department_id: cs.id)

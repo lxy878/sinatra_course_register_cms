@@ -1,0 +1,18 @@
+<header><h1>Create A New Category</h1></header>
+<main>
+    <form action='/categories' method='POST' >
+        
+        <% if flash.has?(:category_error) %>
+            <div><h3 id='error'><%= flash[:category_error]%></div></h3>
+        <% end %>
+
+        <p>Title: <input type='text' name='category[title]' value=''></p>
+        
+        <h3>Departments:</h3>
+        <% @departments.each do |department|%>
+            <input type='checkbox' name='category[department_ids][]' value='<%= department.id %>'><%= department.name%>
+        <% end %><br><br>
+        
+        <input type='submit' name='' value='Create Category'>
+    </form>
+<main>
