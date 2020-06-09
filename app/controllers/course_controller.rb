@@ -17,15 +17,12 @@ before '/courses/*' do
 
     post '/courses' do
         new_course = Course.create(params[:course])
-        if params.has_key?(:student) && !params[:student][:name].empty?
-            params[:student][:department_id] = session[:dep_id]
-            new_course.students << Student.create(params[:student]) 
-        end
-        if params.has_key?(:professor) && !params[:professor][:name].empty?
-            params[:professor][:department_id] = session[:dep_id]
-            new_course.professor = Professor.create(params[:professor])
-            new_course.save
-        end
+        
+        # code refactor -------
+        new_course.create_and_add_professor(params, session[:dep_id])
+        new_course.create_and_add_student(params, session[:dep_id])
+        # --------- end
+
         redirect "/courses/#{new_course.slug}"
     end
 
@@ -46,16 +43,11 @@ before '/courses/*' do
         params[:course][:student_ids] ||= []
         course.update(params[:course])
         
-        if params.has_key?(:professor) && !params[:professor][:name].empty?
-            params[:professor][:department_id] = session[:dep_id]
-            course.professor = Professor.create(params[:professor])
-            course.save
-        end
+        # code refactor ------
+        course.create_and_add_professor(params, session[:dep_id])
+        course.create_and_add_student(params, session[:dep_id])
+        # ------- end
 
-        if params.has_key?(:student) && !params[:student][:name].empty?
-            params[:student][:department_id] = session[:dep_id]
-            course.students << Student.create(params[:student]) 
-        end
         redirect "/courses/#{course.slug}"
     end
 
