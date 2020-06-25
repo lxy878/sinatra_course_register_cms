@@ -1,5 +1,5 @@
 class DepartmentController < ApplicationController
-    before '/departments/*' do
+    before '/department*' do
         authentication_required
     end
     get '/departments/menu' do

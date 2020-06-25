@@ -1,5 +1,5 @@
 class CourseController < ApplicationController
-before '/courses/*' do
+    before '/course*' do
         authentication_required
     end
 

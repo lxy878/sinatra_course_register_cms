@@ -11,6 +11,7 @@ gem 'shotgun'
 gem 'pry'
 gem 'sqlite3'
 gem 'rack-flash3'
+gem "rack", ">= 2.2.3"
 
 group :test do
     gem 'rspec'
