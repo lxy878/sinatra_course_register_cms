@@ -3,19 +3,27 @@
 The content management system(CMS) is designed for the departments of majors in colleges. The system allows a department to own an account with encrypted passwords. Each account allows the department to maintain three types of data, students, professors, and courses. Each type of data can be CRUD-ed by the account owner.
 
 
+## Screenshots/Demo
+
+<a href='https://drive.google.com/file/d/1plBLQgjdnp0GFbcbNFsbjPcJTLkZkrPU/view?usp=sharing'>Demo</a>
+
+## Tech/Framework used
+
+* Built with Ruby
+
 ## Installation
 1. install bundle
- 
- $ bundle install
-
+```
+$ bundle install
+```
 2. install database
- 
- $ rake db:migrate
-
+```
+$ rake db:migrate
+```
 ## Usage
- 
- $ shotgun
- 
+```
+$ shotgun
+```
 Enter: localhost:9393 on browsers
 
 Notice: Port may be different on some mechines. See shotgun description to find out the right port.
