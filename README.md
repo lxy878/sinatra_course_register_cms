@@ -9,7 +9,7 @@ The content management system(CMS) is designed for the departments of majors in 
 
 ## Tech/Framework used
 
-* Built with Ruby
+* Built with sinatra, rake, bcrypt, shotgun, sqlite
 
 ## Installation
 1. install bundle
